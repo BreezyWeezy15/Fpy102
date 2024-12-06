@@ -36,11 +36,16 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="end"
-                style="@style/TextAppearance.AppCompat.Large"
+                style="@style/TextAppearance.AppCompat.Medium"
                 android:text="0"
                 android:textStyle="bold"
                 android:textColor="#4CAF50"/>
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/white"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -63,7 +68,103 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="end"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:text="0"
+                android:textStyle="bold"
+                android:textColor="#4CAF50"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/white"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 style="@style/TextAppearance.AppCompat.Large"
+                android:text="CPU TEMP"
+                android:textStyle="bold"
+                android:textColor="#4CAF50"/>
+
+
+            <TextView
+                android:id="@+id/cpuTempValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:text="0"
+                android:textStyle="bold"
+                android:textColor="#4CAF50"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/white"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/TextAppearance.AppCompat.Large"
+                android:text="GPU TEMP"
+                android:textStyle="bold"
+                android:textColor="#4CAF50"/>
+
+
+            <TextView
+                android:id="@+id/gpuTempValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:text="0"
+                android:textStyle="bold"
+                android:textColor="#4CAF50"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/white"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/TextAppearance.AppCompat.Large"
+                android:text="GPU Fan"
+                android:textStyle="bold"
+                android:textColor="#4CAF50"/>
+
+
+            <TextView
+                android:id="@+id/gpuFanValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                style="@style/TextAppearance.AppCompat.Medium"
                 android:text="0"
                 android:textStyle="bold"
                 android:textColor="#4CAF50"/>
