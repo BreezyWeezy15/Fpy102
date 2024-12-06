@@ -7,8 +7,6 @@ import android.os.Handler
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.rick.fps_app.databinding.ActivityMainBinding
 import kotlinx.coroutines.Runnable
@@ -19,7 +17,6 @@ import java.io.BufferedReader
 import java.io.File
 import java.io.FileReader
 import java.io.IOException
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,15 +30,11 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+
 
 
         // FPS
-        fpsMonitor = FPSMonitor(binding.fpsValues,1000)
+        fpsMonitor = FPSMonitor(1000)
         calculateFPSPeriodically()
 
 
@@ -52,11 +45,20 @@ class MainActivity : AppCompatActivity() {
                 fpsMonitor.startMonitoring()
                 getBatteryTemperature()
                 try {
-                    binding.cpuTempValue.text = """${getCpuTemperature().toString()} °C"""
-                    binding.gpuTempValue.text = """${getGpuTemperature().toString()} °C"""
-                    binding.gpuFanValue.text  = """${getGpuFanSpeed()} RPM"""
+                    binding.cpuTempValue.text = buildString {
+                        append(getCpuTemperature())
+                        append(" °C")
+                    }
+                    binding.gpuTempValue.text = buildString {
+                        append(getGpuTemperature())
+                        append(" °C")
+                    }
+                    binding.gpuFanValue.text  = buildString {
+                        append(getGpuFanSpeed())
+                        append(" RPM")
+                    }
                 } catch (e : Exception){
-
+                    Log.d("TAG","Exception " + e.message)
                 }
                 handler.postDelayed(this, 1000)
             }
@@ -137,8 +139,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
-
     fun getCpuTemperature(): String? {
         return try {
             val reader = BufferedReader(FileReader("/sys/class/thermal/thermal_zone0/temp"))
@@ -182,4 +182,5 @@ class MainActivity : AppCompatActivity() {
         fpsMonitor.stopMonitoring()
         super.onDestroy()
     }
+
 }

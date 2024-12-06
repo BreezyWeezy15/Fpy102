@@ -5,7 +5,7 @@ import android.widget.TextView
 import java.util.concurrent.TimeUnit
 
 
-class FPSMonitor(var view : TextView, samplePeriodMs: Long) {
+class FPSMonitor(samplePeriodMs: Long) {
     private val samplePeriodNs: Long = TimeUnit.NANOSECONDS.convert(samplePeriodMs, TimeUnit.MILLISECONDS)
     private val frameTimestamps = mutableListOf<Long>()
     private var monitoring = false
