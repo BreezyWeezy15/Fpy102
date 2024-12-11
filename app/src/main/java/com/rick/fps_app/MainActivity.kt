@@ -1,10 +1,14 @@
 package com.rick.fps_app
 
 import android.annotation.SuppressLint
+import android.graphics.Rect
 import android.os.BatteryManager
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
+import android.view.MotionEvent
+import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -22,11 +26,13 @@ import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
 
+
     private lateinit var fpsMonitor : FPSMonitor
     private lateinit var binding : ActivityMainBinding
     private val handler = Handler()
     private var runnable: Runnable? = null
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -39,37 +45,39 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        // FPS
-        fpsMonitor = FPSMonitor(1000)
-        calculateFPSPeriodically()
+//        // FPS
+//        fpsMonitor = FPSMonitor(1000)
+//        calculateFPSPeriodically()
+//
+//
+//        // BATTERY
+//        Handler().postDelayed({},1000)
+//        runnable = object : Runnable {
+//            override fun run() {
+//                fpsMonitor.startMonitoring()
+//                getBatteryTemperature()
+//                try {
+//                    binding.cpuTempValue.text = buildString {
+//                        append(getCpuTemperature())
+//                        append(" °C")
+//                    }
+//                    binding.gpuTempValue.text = buildString {
+//                        append(getGpuTemperature())
+//                        append(" °C")
+//                    }
+//                    binding.gpuFanValue.text  = buildString {
+//                        append(getGpuFanSpeed())
+//                        append(" RPM")
+//                    }
+//                } catch (e : Exception){
+//                    Log.d("TAG","Exception " + e.message)
+//                }
+//                handler.postDelayed(this, 1000)
+//            }
+//        }
+//        handler.postDelayed(runnable as Runnable, 1000)
 
 
-        // BATTERY
-        Handler().postDelayed({},1000)
-        runnable = object : Runnable {
-            override fun run() {
-                fpsMonitor.startMonitoring()
-                getBatteryTemperature()
-                try {
-                    binding.cpuTempValue.text = buildString {
-                        append(getCpuTemperature())
-                        append(" °C")
-                    }
-                    binding.gpuTempValue.text = buildString {
-                        append(getGpuTemperature())
-                        append(" °C")
-                    }
-                    binding.gpuFanValue.text  = buildString {
-                        append(getGpuFanSpeed())
-                        append(" RPM")
-                    }
-                } catch (e : Exception){
-                    Log.d("TAG","Exception " + e.message)
-                }
-                handler.postDelayed(this, 1000)
-            }
-        }
-        handler.postDelayed(runnable as Runnable, 1000)
 
     }
 
